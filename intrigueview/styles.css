@@ -1,0 +1,40 @@
+.entry-tile {
+  border-radius: 10px;
+  border: 1px solid black;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  width: 16rem;
+  height: 4rem;
+  display: inline-block;
+}
+.image-space {
+  float: left;
+  display: inline-block;
+  position: relative;
+  margin: 0;
+  border-radius: 7px 0 0 7px;
+  width: 25%;
+  height: 100%;
+  overflow: hidden;
+}
+.fix-image-sizing {
+  display: inline-block;
+  height: 100%;
+  width: auto;
+  overflow: hidden;
+  position: absolute;
+    top: -9999px;
+    bottom: -9999px;
+    left: -9999px;
+    right: -9999px;
+    margin: auto;
+}
+.text-intview-content {
+  float: left;
+  display: inline-block;
+  position: relative;
+  width: 70%;
+  height: 86%;
+  padding: .3rem;
+  vertical-align: center;
+}
