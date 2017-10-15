@@ -24,19 +24,21 @@ class block_intrigueview extends block_base {
 
     // Check if a feed is available
     if ($feed = simplexml_load_file($this->config->url)) {
-      $this->content->text = ""; // Empty the container to make room for the display
+      $this->content->text = "<script src='../blocks/intrigueview/amd/js/display.js'></script>"; // Empty the container to make room for the display
               // MAKE CONFIGURABLE LATER NUMBER OF DISPLAYS
       for ($c = 0; $c < 5; $c++) { // Display 5 times to display 5 feed tiles
         // Edit the Content to display the Feed
         $newTile = ""; // Reset the tile div
         $newTile .= "<div class='entry-tile'>";
+        // Have the entry link clickable wherever
+        $newTile .= '<a href="' . $feed->channel->entry[$c]->link . '" onclick="return openInNewTab(\'' . $feed->channel->entry[$c]->link . '\')" class="hover-detect"><span class="entry-url"></span></a>';
         // Add an image only if one exists
         if (isset($feed->channel->entry[$c]->image)) {
           $newTile .= "<div class='image-space'><img class='fix-image-sizing' src='" . $feed->channel->entry[$c]->image . "'></div>";
         } else {
-          $newTile .= "<div class='image-space'><img class='fix-image-sizing' src='../assets/tileFill.png'></div>";
+          $newTile .= "<div class='image-space'><img class='fix-image-sizing' src='../blocks/intrigueview/assets/tileFill.png'></div>";
         }
-        $newTile .= "<div class='text-intview-content'>" . $feed->channel->entry[$c]->title . "</div>";
+        $newTile .= "<div class='text-intview-content entry-heading'>" . $feed->channel->entry[$c]->title . "</div>";
         $newTile .= "</div>";
         $this->content->text .= $newTile;
         /* FORMAT TEMPLATE
