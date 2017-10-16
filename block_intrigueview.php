@@ -31,14 +31,14 @@ class block_intrigueview extends block_base {
         $newTile = ""; // Reset the tile div
         $newTile .= "<div class='entry-tile'>";
         // Have the entry link clickable wherever
-        $newTile .= '<a href="' . $feed->channel->entry[$c]->link . '" onclick="return openInNewTab(\'' . $feed->channel->entry[$c]->link . '\')" class="hover-detect"><span class="entry-url"></span></a>';
+        $newTile .= '<a href="' . $feed->channel->item[$c]->link . '" onclick="return openInNewTab(\'' . $feed->channel->item[$c]->link . '\')" class="hover-detect"><span class="entry-url"></span></a>';
         // Add an image only if one exists
-        if (isset($feed->channel->entry[$c]->image)) {
-          $newTile .= "<div class='image-space'><img class='fix-image-sizing' src='" . $feed->channel->entry[$c]->image . "'></div>";
+        if (isset($feed->channel->item[$c]->image)) {
+          $newTile .= "<div class='image-space'><img class='fix-image-sizing' src='" . $feed->channel->item[$c]->image . "'></div>";
         } else {
           $newTile .= "<div class='image-space'><img class='fix-image-sizing' src='../blocks/intrigueview/assets/tileFill.png'></div>";
         }
-        $newTile .= "<div class='text-intview-content entry-heading'>" . $feed->channel->entry[$c]->title . "</div>";
+        $newTile .= "<div class='text-intview-content entry-heading'>" . $feed->channel->item[$c]->title . "</div>";
         $newTile .= "</div>";
         $this->content->text .= $newTile;
         /* FORMAT TEMPLATE
